@@ -234,8 +234,16 @@ function toArrayOfSquares(arr) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  let help = 0;
+  return arr.map((item, index) => {
+    if (index === 0) {
+      help = item;
+      return help;
+    }
+    help += item;
+    return help;
+  });
 }
 
 /**
@@ -453,8 +461,16 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    const result = a.country > b.country ? 1 : -1;
+    return result;
+  }).sort((a, b) => {
+    if (a.country === b.country) {
+      return a.city > b.city ? 1 : -1;
+    }
+    return 1;
+  });
 }
 
 /**
@@ -475,8 +491,12 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return new Array(n).fill(new Array(n).fill(0)).map((arr, i) => arr.map((item, j) => {
+    let help = item;
+    help = i === j ? 1 : 0;
+    return help;
+  }));
 }
 
 /**
